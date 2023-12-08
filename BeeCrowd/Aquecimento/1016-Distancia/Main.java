@@ -1,5 +1,3 @@
-package pkg1016;
-
 import java.io.IOException;
 import java.util.Scanner;
 
