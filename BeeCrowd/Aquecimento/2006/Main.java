@@ -28,6 +28,6 @@ public class Main {
             acertos += 1;
         } 
         System.out.println(acertos);
-    }
-    
+        teclado.close();
+    } 
 }

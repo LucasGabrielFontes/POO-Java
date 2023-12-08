@@ -6,5 +6,6 @@ public class Main {
         Scanner teclado = new Scanner (System.in);
         int t = teclado.nextInt();
         System.out.println(4*t);
+        teclado.close();
     }
 }

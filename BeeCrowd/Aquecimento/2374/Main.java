@@ -13,5 +13,6 @@ public class Main {
             M = teclado.nextInt();
         }
         System.out.println(N - M);
+        teclado.close();
     }
 }
