@@ -1,5 +1,3 @@
-package pkg2388;
-
 import java.io.IOException;
 import java.util.Scanner;
 

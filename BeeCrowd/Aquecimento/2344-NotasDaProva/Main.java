@@ -1,5 +1,3 @@
-package pkg2344;
-
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -12,6 +10,7 @@ public class Main {
         }
         char conceito = converteParaConceito(N);
         System.out.println(conceito);
+        teclado.close();
     }
     
     public static char converteParaConceito (int num) {
