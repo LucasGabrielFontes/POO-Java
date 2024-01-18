@@ -1,3 +1,6 @@
+// Autor: Lucas Gabriel Fontes da Silva
+// Propósito: simular um sistema de compras de passagens aéreas
+
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.security.SecureRandom;
@@ -17,15 +20,15 @@ public class CompanhiaAerea {
 			
 			int resp = Integer.parseInt(JOptionPane.showInputDialog("========== EP AIR LINES ==========\n\n" +
 			"Seja muito bem-vindo ao site da EP Air Lines!\nEscolha uma opção:\n\n" + 
-			"1- Sair\n2- Reservar assento\n\n"));
+			"1- Reservar assento\n2- Sair\n\n"));
 		
 			while (resp != 1 && resp != 2) {
 				resp = Integer.parseInt(JOptionPane.showInputDialog("========== EP AIR LINES ==========\n\n" +
 				"Opção inválida!\nTente novamente:\n\n" + 
-				"1- Sair\n2- Reservar assento\n"));
+				"1- Reservar assento\n2- Sair\n"));
 			}
 		
-			if (resp == 2) {
+			if (resp == 1) {
 				
 				String nome = JOptionPane.showInputDialog("========== EP AIR LINES ==========\n\n" +
 				"Para começar seu cadastro, insira o seu nome, por gentileza:\n");
@@ -66,14 +69,25 @@ public class CompanhiaAerea {
 						
 						assentosP1[assento] = true;
 						
-						prosseguir = Integer.parseInt(JOptionPane.showInputDialog(null, "===== CARTÃO DE EMBARQUE =====\n\n" + 
-						"Nome: " + passageiros.get(contador).getNome() + "\n" +
-						"CPF:" + (passageiros.get(contador).getCpf())/1000000 + "******" + "\n" +
-						"Assento: " + (assento+1) + "\n" + 
-						"Primeira classe.\n\n" +
-						"Opções: \n" +
-						"1- Reservar outro assento\n" +
-						"2- Sair\n\n"));
+						if (verificaDisponibilidadeAssentos(assentosP1) || verificaDisponibilidadeAssentos(assentosP2)) {
+							prosseguir = Integer.parseInt(JOptionPane.showInputDialog(null, "===== CARTÃO DE EMBARQUE =====\n\n" + 
+							"Nome: " + passageiros.get(contador).getNome() + "\n" +
+							"CPF: " + (passageiros.get(contador).getCpf())/1000000 + "******" + "\n" +
+							"Assento: " + (assento+1) + "\n" + 
+							"Primeira classe.\n\n" +
+							"Opções:\n" +
+							"1- Voltar à página inicial\n" +
+							"2- Sair\n\n"));
+						} else {
+							JOptionPane.showMessageDialog(null, "===== CARTÃO DE EMBARQUE =====\n\n" + 
+							"Nome: " + passageiros.get(contador).getNome() + "\n" +
+							"CPF: " + (passageiros.get(contador).getCpf())/1000000 + "******" + "\n" +
+							"Assento: " + (assento+1) + "\n" + 
+							"Primeira classe.\n\n" +
+							"Obrigado por escolher a EP Airlines!\n");
+						}
+						
+						
 					} else {
 						int assento = aleatorio.nextInt(5);
 						
@@ -83,14 +97,25 @@ public class CompanhiaAerea {
 						
 						assentosP2[assento] = true;
 						
-						prosseguir = Integer.parseInt(JOptionPane.showInputDialog(null, "===== CARTÃO DE EMBARQUE =====\n\n" + 
-						"Nome: " + passageiros.get(contador).getNome() + "\n" +
-						"CPF:" + (passageiros.get(contador).getCpf())/1000000 + "******" + "\n" +
-						"Assento: " + (assento+6) + "\n" + 
-						"Segunda classe.\n\n"+
-						"Opções: \n" +
-						"1- Reservar outro assento\n" +
-						"2- Sair\n\n"));
+						if (verificaDisponibilidadeAssentos(assentosP1) || verificaDisponibilidadeAssentos(assentosP2)) {
+							
+							prosseguir = Integer.parseInt(JOptionPane.showInputDialog(null, "===== CARTÃO DE EMBARQUE =====\n\n" + 
+							"Nome: " + passageiros.get(contador).getNome() + "\n" +
+							"CPF: " + (passageiros.get(contador).getCpf())/1000000 + "******" + "\n" +
+							"Assento: " + (assento+6) + "\n" + 
+							"Segunda classe.\n\n"+
+							"Opções:\n" +
+							"1- Voltar à página inicial\n" +
+							"2- Sair\n\n"));
+							
+						} else {
+							JOptionPane.showMessageDialog(null, "===== CARTÃO DE EMBARQUE =====\n\n" + 
+							"Nome: " + passageiros.get(contador).getNome() + "\n" +
+							"CPF: " + (passageiros.get(contador).getCpf())/1000000 + "******" + "\n" +
+							"Assento: " + (assento+6) + "\n" + 
+							"Segunda classe.\n\n" +
+							"Obrigado por escolher a EP Airlines!\n");
+						}
 					}
 				} else if (verificaDisponibilidadeAssentos(assentosP1)){
 					int escolha = Integer.parseInt(JOptionPane.showInputDialog("========== EP AIR LINES ==========\n\n" +
@@ -117,11 +142,26 @@ public class CompanhiaAerea {
 						
 						assentosP1[assento] = true;
 						
-						prosseguir = Integer.parseInt(JOptionPane.showInputDialog(null, "===== CARTÃO DE EMBARQUE =====\n\n" + 
-						"Nome: " + passageiros.get(contador).getNome() + "\n" +
-						"CPF:" + (passageiros.get(contador).getCpf())/1000000 + "******" + "\n" +
-						"Assento: " + (assento+1) + "\n" + 
-						"Primeira classe."));
+						if (verificaDisponibilidadeAssentos(assentosP1)) {
+							
+							prosseguir = Integer.parseInt(JOptionPane.showInputDialog(null, "===== CARTÃO DE EMBARQUE =====\n\n" + 
+							"Nome: " + passageiros.get(contador).getNome() + "\n" +
+							"CPF: " + (passageiros.get(contador).getCpf())/1000000 + "******" + "\n" +
+							"Assento: " + (assento+1) + "\n" + 
+							"Primeira classe.\n\n" +
+							"Opções:\n" +
+							"1- Voltar à página inicial\n" +
+							"2- Sair\n\n"));
+							
+						} else {
+							JOptionPane.showMessageDialog(null, "===== CARTÃO DE EMBARQUE =====\n\n" + 
+							"Nome: " + passageiros.get(contador).getNome() + "\n" +
+							"CPF: " + (passageiros.get(contador).getCpf())/1000000 + "******" + "\n" +
+							"Assento: " + (assento+6) + "\n" + 
+							"Segunda classe.\n\n" +
+							"Obrigado por escolher a EP Airlines!\n");
+						}
+						
 					} else {
 						JOptionPane.showMessageDialog(null, "Nosso próximo voo para o seu destino partirá em 3 horas." +
 						" Fique atento aos horários, hein! Nos vemos logo.");
@@ -151,14 +191,28 @@ public class CompanhiaAerea {
 						
 						assentosP2[assento] = true;
 						
-						prosseguir = Integer.parseInt(JOptionPane.showInputDialog(null, "===== CARTÃO DE EMBARQUE =====\n\n" + 
-						"Nome: " + passageiros.get(contador).getNome() + "\n" +
-						"CPF:" + (passageiros.get(contador).getCpf())/1000000 + "******" + "\n" +
-						"Assento: " + (assento+6) + "\n" + 
-						"Segunda classe.\n\n" +
-						"Opções: \n" +
-						"1- Reservar outro assento\n" +
-						"2- Sair\n\n"));
+						
+						if (verificaDisponibilidadeAssentos(assentosP2)) {
+							
+							prosseguir = Integer.parseInt(JOptionPane.showInputDialog(null, "===== CARTÃO DE EMBARQUE =====\n\n" + 
+							"Nome: " + passageiros.get(contador).getNome() + "\n" +
+							"CPF: " + (passageiros.get(contador).getCpf())/1000000 + "******" + "\n" +
+							"Assento: " + (assento+6) + "\n" + 
+							"Segunda classe.\n\n" +
+							"Opções: \n" +
+							"1- Voltar à página inicial\n" +
+							"2- Sair\n\n"));
+							
+						} else {
+							JOptionPane.showMessageDialog(null, "===== CARTÃO DE EMBARQUE =====\n\n" + 
+							"Nome: " + passageiros.get(contador).getNome() + "\n" +
+							"CPF: " + (passageiros.get(contador).getCpf())/1000000 + "******" + "\n" +
+							"Assento: " + (assento+6) + "\n" + 
+							"Segunda classe.\n\n" +
+							"Obrigado por escolher a EP Airlines!\n");
+						}
+						
+						
 					} else {
 						JOptionPane.showMessageDialog(null, "Nosso próximo voo para o seu destino partirá em 3 horas." +
 						" Fique atento aos horários, hein! Nos vemos logo.");
@@ -171,6 +225,7 @@ public class CompanhiaAerea {
 			}
 			
 			contador += 1;
+			
 		} while (prosseguir == 1);
 	}
 	
