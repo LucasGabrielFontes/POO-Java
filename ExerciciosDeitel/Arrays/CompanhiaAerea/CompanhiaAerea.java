@@ -222,6 +222,8 @@ public class CompanhiaAerea {
 					"Não se preocupe, pois há outro voo para o mesmo destino daqui a 3 horas.\n\n" +
 					"Fique atento e nos vemos logo!");
 				}
+			} else {
+				prosseguir = 0;
 			}
 			
 			contador += 1;
