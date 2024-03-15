@@ -1,5 +1,6 @@
 package obj;
-import util.*;
+
+import util.Speaker;
 
 public class Personagem extends Objeto implements Speaker {
 
